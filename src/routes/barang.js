@@ -1,9 +1,9 @@
 import { useState } from "react";
-import "./App.css";
-import Table from "./components/table/table";
-import { headerPelanggan, recordDataExample } from "./utils/tables/tableData";
+import "../App.css";
+import Table from "../components/table/table";
+import { headerPelanggan, recordDataExample } from "../utils/tables/tableData";
 
-function App() {
+function Barang() {
   const [inputs, setInputs] = useState({});
 
   const handleChange = (event) => {
@@ -21,30 +21,29 @@ function App() {
     <div>
       <main>
         <form onSubmit={handleSubmit}>
-          <label style={{ display: "block" }}>Nama</label>
+          <label style={{ display: "block" }}>Nama Barang</label>
           <input
             name="nama"
             type={"text"}
             placeholder="form"
             onChange={handleChange}
           />
-          <label style={{ display: "block" }}>Domisili</label>
+          <label style={{ display: "block" }}>Kategori</label>
+          <input name="kategori" list="kategori" onChange={handleChange} />
+          <datalist id="kategori">
+            <option value="ATK" />
+            <option value="RT" />
+            <option value="MASAK" />
+            <option value="ELEKTRONIK" />
+          </datalist>
+
+          <label style={{ display: "block" }}>Harga (Rp.)</label>
           <input
-            name="domisili"
-            type={"text"}
-            placeholder="form"
+            name="harga"
+            type={"number"}
+            min={"0"}
             onChange={handleChange}
           />
-          <label style={{ display: "block" }}>Jenis Kelamin</label>
-          <select
-            name="jenis_kelamin"
-            type={"radio"}
-            placeholder="form"
-            onChange={handleChange}
-          >
-            <option value={"PRIA"}>Pria</option>
-            <option value={"WANITA"}>WANITA</option>
-          </select>
           <input type={"submit"} value="Simpan" style={{ display: "block" }} />
         </form>
       </main>
@@ -52,5 +51,4 @@ function App() {
     </div>
   );
 }
-
-export default App;
+export default Barang;
