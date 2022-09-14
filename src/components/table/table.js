@@ -10,7 +10,7 @@ export default function Table({ headerData, recordData }) {
           ))}
         </tr>
         {recordData.map((record, idx) => (
-          <tr key={record.id}>
+          <tr key={idx}>
             <td>{record.id_pelanggan}</td>
             <td>{record.nama}</td>
             <td>{record.domisili}</td>
