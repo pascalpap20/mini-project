@@ -128,6 +128,7 @@ function Penjualan() {
           // inputs.kode = res.data.kode;
           // setDataPenjualan((prevState) => [...prevState, newData]);
           fetchPenjualan();
+          setItemList([]);
         })
         .catch((err) => console.log(err));
     }
@@ -366,10 +367,11 @@ function Penjualan() {
 
   return (
     <div>
+      <h1>PENJUALAN</h1>
       <main>
         <form onSubmit={handleSubmit}>
           <label style={{ display: "block" }}>Kode Pelanggan</label>
-          <select name="kode_pelanggan" onChange={handleChange}>
+          <select name="kode_pelanggan" onChange={handleChange} required>
             <option value={""}>--</option>
             {dataPelanggan.map((pelanggan, idx) => (
               <option key={idx} value={pelanggan.id_pelanggan}>
@@ -378,7 +380,7 @@ function Penjualan() {
             ))}
           </select>
           <label style={{ display: "block" }}>Kode Barang</label>
-          <select name="kode_barang" onChange={handleChange}>
+          <select name="kode_barang" onChange={handleChange} required>
             <option value={""}>--</option>
             {dataBarang.map((barang, idx) => (
               <option key={idx} value={barang.kode}>
@@ -388,8 +390,15 @@ function Penjualan() {
           </select>
 
           <label style={{ display: "block" }}>Qty</label>
-          <input name="qty" type={"number"} min={"0"} onChange={handleChange} />
+          <input
+            name="qty"
+            type={"number"}
+            min={"0"}
+            onChange={handleChange}
+            required
+          />
           <button
+            className="button-green"
             style={{ display: "block" }}
             onClick={handleAdd}
             type="button"
@@ -400,13 +409,13 @@ function Penjualan() {
           <input type={"submit"} value="Simpan" style={{ display: "block" }} />
         </form>
       </main>
-      <ul>
-        {itemList.map((item, idx) => (
-          <li key={idx}>
+      {itemList.map((item, idx) => (
+        <ul style={{ borderStyle: "inset", marginBottom: "5px" }} key={idx}>
+          <li>
             Kode Barang : {item.kode_barang} | Qty : {item.qty}
           </li>
-        ))}
-      </ul>
+        </ul>
+      ))}
       <TablePenjualan
         headerData={headerPenjualan}
         recordData={dataPenjualan}

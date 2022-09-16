@@ -7,18 +7,19 @@ import reportWebVitals from "./reportWebVitals";
 import Penjualan from "./routes/penjualan";
 import Barang from "./routes/barang";
 import Layout from "./components/layout/layout";
+import ResponsiveDrawer from "./components/layout/ResponsiveDrawer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Layout>
+      <ResponsiveDrawer>
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="penjualan" element={<Penjualan />} />
           <Route path="barang" element={<Barang />} />
         </Routes>
-      </Layout>
+      </ResponsiveDrawer>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -130,28 +130,39 @@ function App() {
 
   return (
     <div>
+      <h1>PELANGGAN</h1>
       <main>
         <form onSubmit={handleSubmit}>
-          <label style={{ display: "block" }}>Nama</label>
+          <label style={{ display: "block" }} htmlFor={"nama"}>
+            Nama
+          </label>
           <input
             name="nama"
             type={"text"}
-            placeholder="form"
             onChange={handleChange}
+            id={"nama"}
+            required
           />
-          <label style={{ display: "block" }}>Domisili</label>
+          <label style={{ display: "block" }} htmlFor={"domisili"}>
+            Domisili
+          </label>
           <input
             name="domisili"
             type={"text"}
-            placeholder="form"
             onChange={handleChange}
+            id={"domisili"}
+            required
           />
-          <label style={{ display: "block" }}>Jenis Kelamin</label>
+          <label style={{ display: "block" }} htmlFor={"jenis_kelamin"}>
+            Jenis Kelamin
+          </label>
           <select
             name="jenis_kelamin"
             type={"radio"}
             placeholder="form"
             onChange={handleChange}
+            id={"jenis_kelamin"}
+            required
           >
             <option value={""}>--</option>
             <option value={"PRIA"}>PRIA</option>

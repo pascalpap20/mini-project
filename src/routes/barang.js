@@ -128,17 +128,18 @@ function Barang() {
 
   return (
     <div>
+      <h1>BARANG</h1>
       <main>
         <form onSubmit={handleSubmit}>
           <label style={{ display: "block" }}>Nama Barang</label>
-          <input
-            name="nama"
-            type={"text"}
-            placeholder="form"
-            onChange={handleChange}
-          />
+          <input name="nama" type={"text"} onChange={handleChange} required />
           <label style={{ display: "block" }}>Kategori</label>
-          <input name="kategori" list="kategori" onChange={handleChange} />
+          <input
+            name="kategori"
+            list="kategori"
+            onChange={handleChange}
+            required
+          />
           <datalist id="kategori">
             <option value="ATK" />
             <option value="RT" />
@@ -152,6 +153,7 @@ function Barang() {
             type={"number"}
             min={"0"}
             onChange={handleChange}
+            required
           />
           <input type={"submit"} value="Simpan" style={{ display: "block" }} />
         </form>

@@ -67,28 +67,45 @@ export default function TablePenjualan({
                 handleEdit.editMode.rowKey === record.id_nota ? (
                   ""
                 ) : (
-                  <button onClick={() => handleView.openModal(record)}>
+                  <button
+                    className="button-gray"
+                    onClick={() => handleView.openModal(record)}
+                  >
                     LIHAT ITEM
                   </button>
                 )}
                 {handleEdit.editMode.status &&
                 handleEdit.editMode.rowKey === record.id_nota ? (
-                  <button onClick={() => handleEdit.handleSave(record)}>
+                  <button
+                    className="button-green"
+                    onClick={() => handleEdit.handleSave(record)}
+                  >
                     SIMPAN
                   </button>
                 ) : (
-                  <button onClick={() => handleEdit.handleEdit(record)}>
+                  <button
+                    className="button-green"
+                    onClick={() => handleEdit.handleEdit(record)}
+                  >
                     UBAH
                   </button>
                 )}
 
                 {handleEdit.editMode.status &&
                 handleEdit.editMode.rowKey === record.id_nota ? (
-                  <button onClick={() => handleEdit.handleCancel(record)}>
+                  <button
+                    className="button-red"
+                    onClick={() => handleEdit.handleCancel(record)}
+                  >
                     BATAL
                   </button>
                 ) : (
-                  <button onClick={() => handleDelete(record)}>HAPUS</button>
+                  <button
+                    className="button-red"
+                    onClick={() => handleDelete(record)}
+                  >
+                    HAPUS
+                  </button>
                 )}
               </td>
             </tr>

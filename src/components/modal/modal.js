@@ -1,6 +1,9 @@
 import React from "react";
 // import ReactDOM from "react-dom";
 import Modal from "react-modal";
+import "../../App.css";
+import "../table/table.css";
+import "./modal.css";
 
 const customStyles = {
   content: {
@@ -10,8 +13,11 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    width: "500px",
+    width: "80%",
+    maxHeight: "100vh",
+    height: "70%",
   },
+  overlay: { zIndex: 1500 },
 };
 
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
@@ -31,9 +37,19 @@ export default function ModalComponent({ modalData, handleView, dataBarang }) {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <button onClick={handleView.closeModal}>close</button>
+        <button
+          style={{ float: "right" }}
+          className="button-red"
+          onClick={handleView.closeModal}
+        >
+          TUTUP
+        </button>
         <label style={{ display: "block" }}>Kode Barang</label>
-        <select name="kode_barang" onChange={handleView.handleModalChange}>
+        <select
+          name="kode_barang"
+          onChange={handleView.handleModalChange}
+          required
+        >
           <option value={""}>--</option>
           {dataBarang.map((barang, idx) => (
             <option key={idx} value={barang.kode}>
@@ -47,51 +63,64 @@ export default function ModalComponent({ modalData, handleView, dataBarang }) {
           type={"number"}
           min={"0"}
           onChange={handleView.handleModalChange}
+          required
         />
         <button
+          className="button-green"
           type="button"
           onClick={() => handleView.handleModalAdd(modalData)}
+          style={{ display: "block" }}
         >
           TAMBAH
         </button>
         {modalData?.map((barang, idx) => (
-          <ul key={idx}>
-            {handleView.modalEditMode.status &&
-            handleView.modalEditMode.rowKey === barang.kode_barang ? (
-              <button
-                type="button"
-                onClick={() => handleView.handleModalEditSave(barang)}
-              >
-                SIMPAN
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => handleView.handleModalEdit(barang)}
-              >
-                UBAH
-              </button>
-            )}
-            {handleView.modalEditMode.status &&
-            handleView.modalEditMode.rowKey === barang.kode_barang ? (
-              <button
-                type="button"
-                onClick={() => handleView.handleModalEditCancel(barang)}
-              >
-                BATAL
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => handleView.handleModalDelete(barang)}
-              >
-                HAPUS
-              </button>
-            )}
+          <ul className="item" key={idx}>
+            <li>
+              {handleView.modalEditMode.status &&
+              handleView.modalEditMode.rowKey === barang.kode_barang ? (
+                <button
+                  type="button"
+                  onClick={() => handleView.handleModalEditSave(barang)}
+                  className="button-green"
+                >
+                  SIMPAN
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => handleView.handleModalEdit(barang)}
+                  className="button-green"
+                >
+                  UBAH
+                </button>
+              )}
+            </li>
+            <li>
+              {handleView.modalEditMode.status &&
+              handleView.modalEditMode.rowKey === barang.kode_barang ? (
+                <button
+                  type="button"
+                  onClick={() => handleView.handleModalEditCancel(barang)}
+                  className="button-red"
+                >
+                  BATAL
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => handleView.handleModalDelete(barang)}
+                  className="button-red"
+                >
+                  HAPUS
+                </button>
+              )}
+            </li>
+
             {handleView.modalEditMode.status &&
             handleView.modalEditMode.rowKey === barang.kode_barang ? (
               <li>
                 <select
+                  required
                   name="kode_barang"
                   onChange={handleView.handleModalEditChange}
                   style={{ display: "block" }}
@@ -107,10 +136,12 @@ export default function ModalComponent({ modalData, handleView, dataBarang }) {
             ) : (
               <li>KODE BARANG : {barang.kode_barang}</li>
             )}
+
             <li>ID NOTA : {barang.nota}</li>
             {handleView.modalEditMode.status &&
             handleView.modalEditMode.rowKey === barang.kode_barang ? (
               <input
+                required
                 name="qty"
                 type={"number"}
                 min={"0"}
@@ -125,7 +156,6 @@ export default function ModalComponent({ modalData, handleView, dataBarang }) {
             <li>HARGA BARANG : {barang.barang_single.harga}</li>
           </ul>
         ))}
-        <form></form>
       </Modal>
     </>
   );

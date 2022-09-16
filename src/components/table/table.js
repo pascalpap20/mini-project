@@ -24,7 +24,6 @@ export default function Table({
                 <input
                   name="nama"
                   type={"text"}
-                  placeholder="form"
                   onChange={handleEdit.handleChange}
                   defaultValue={handleEdit.editValue.nama}
                 />
@@ -53,7 +52,6 @@ export default function Table({
                 <select
                   name="jenis_kelamin"
                   type={"radio"}
-                  placeholder="form"
                   onChange={handleEdit.handleChange}
                   defaultValue={handleEdit.editValue.jenis_kelamin}
                 >
@@ -69,22 +67,36 @@ export default function Table({
             <td>
               {handleEdit.editMode.status &&
               handleEdit.editMode.rowKey === record.id_pelanggan ? (
-                <button onClick={() => handleEdit.handleSave(record)}>
+                <button
+                  className="button-green"
+                  onClick={() => handleEdit.handleSave(record)}
+                >
                   SIMPAN
                 </button>
               ) : (
-                <button onClick={() => handleEdit.handleEdit(record)}>
+                <button
+                  className="button-green"
+                  onClick={() => handleEdit.handleEdit(record)}
+                >
                   UBAH
                 </button>
               )}
 
               {handleEdit.editMode.status &&
               handleEdit.editMode.rowKey === record.id_pelanggan ? (
-                <button onClick={() => handleEdit.handleCancel(record)}>
+                <button
+                  className="button-red"
+                  onClick={() => handleEdit.handleCancel(record)}
+                >
                   BATAL
                 </button>
               ) : (
-                <button onClick={() => handleDelete(record)}>HAPUS</button>
+                <button
+                  className="button-red"
+                  onClick={() => handleDelete(record)}
+                >
+                  HAPUS
+                </button>
               )}
             </td>
           </tr>

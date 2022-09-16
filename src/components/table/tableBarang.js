@@ -73,22 +73,36 @@ export default function TableBarang({
             <td>
               {handleEdit.editMode.status &&
               handleEdit.editMode.rowKey === record.kode ? (
-                <button onClick={() => handleEdit.handleSave(record)}>
+                <button
+                  className="button-green"
+                  onClick={() => handleEdit.handleSave(record)}
+                >
                   SIMPAN
                 </button>
               ) : (
-                <button onClick={() => handleEdit.handleEdit(record)}>
+                <button
+                  className="button-green"
+                  onClick={() => handleEdit.handleEdit(record)}
+                >
                   UBAH
                 </button>
               )}
 
               {handleEdit.editMode.status &&
               handleEdit.editMode.rowKey === record.kode ? (
-                <button onClick={() => handleEdit.handleCancel(record)}>
+                <button
+                  className="button-red"
+                  onClick={() => handleEdit.handleCancel(record)}
+                >
                   BATAL
                 </button>
               ) : (
-                <button onClick={() => handleDelete(record)}>HAPUS</button>
+                <button
+                  className="button-red"
+                  onClick={() => handleDelete(record)}
+                >
+                  HAPUS
+                </button>
               )}
             </td>
           </tr>
