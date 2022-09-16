@@ -1,6 +1,6 @@
 import "./table.css";
 
-export default function Table({
+export default function TableBarang({
   headerData,
   recordData,
   handleDelete,
@@ -16,11 +16,11 @@ export default function Table({
         </tr>
         {recordData.map((record, idx) => (
           <tr key={idx}>
-            <td>{record.id_pelanggan}</td>
+            <td>{record.kode}</td>
 
             <td>
               {handleEdit.editMode.status &&
-              handleEdit.editMode.rowKey === record.id_pelanggan ? (
+              handleEdit.editMode.rowKey === record.kode ? (
                 <input
                   name="nama"
                   type={"text"}
@@ -35,40 +35,44 @@ export default function Table({
 
             <td>
               {handleEdit.editMode.status &&
-              handleEdit.editMode.rowKey === record.id_pelanggan ? (
+              handleEdit.editMode.rowKey === record.kode ? (
+                <>
+                  <input
+                    name="kategori"
+                    list="kategori"
+                    onChange={handleEdit.handleChange}
+                    defaultValue={handleEdit.editValue.kategori}
+                  />
+                  <datalist id="kategori">
+                    <option value="ATK" />
+                    <option value="RT" />
+                    <option value="MASAK" />
+                    <option value="ELEKTRONIK" />
+                  </datalist>
+                </>
+              ) : (
+                <div>{record.kategori}</div>
+              )}
+            </td>
+
+            <td>
+              {handleEdit.editMode.status &&
+              handleEdit.editMode.rowKey === record.kode ? (
                 <input
-                  name="domisili"
-                  type={"text"}
+                  name="harga"
+                  type={"number"}
+                  min={"0"}
                   onChange={handleEdit.handleChange}
-                  defaultValue={handleEdit.editValue.domisili}
+                  defaultValue={handleEdit.editValue.harga}
                 />
               ) : (
-                <div>{record.domisili}</div>
+                <div>{record.harga}</div>
               )}
             </td>
 
             <td>
               {handleEdit.editMode.status &&
-              handleEdit.editMode.rowKey === record.id_pelanggan ? (
-                <select
-                  name="jenis_kelamin"
-                  type={"radio"}
-                  placeholder="form"
-                  onChange={handleEdit.handleChange}
-                  defaultValue={handleEdit.editValue.jenis_kelamin}
-                >
-                  {/* <option value={""}>--</option> */}
-                  <option value={"PRIA"}>PRIA</option>
-                  <option value={"WANITA"}>WANITA</option>
-                </select>
-              ) : (
-                <div>{record.jenis_kelamin}</div>
-              )}
-            </td>
-
-            <td>
-              {handleEdit.editMode.status &&
-              handleEdit.editMode.rowKey === record.id_pelanggan ? (
+              handleEdit.editMode.rowKey === record.kode ? (
                 <button onClick={() => handleEdit.handleSave(record)}>
                   SIMPAN
                 </button>
@@ -79,7 +83,7 @@ export default function Table({
               )}
 
               {handleEdit.editMode.status &&
-              handleEdit.editMode.rowKey === record.id_pelanggan ? (
+              handleEdit.editMode.rowKey === record.kode ? (
                 <button onClick={() => handleEdit.handleCancel(record)}>
                   BATAL
                 </button>

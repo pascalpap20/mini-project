@@ -1,4 +1,10 @@
-const headerPelanggan = ["ID PELANGGAN", "NAMA", "DOMISILI", "JENIS KELAMIN"];
+const headerPelanggan = [
+  "ID PELANGGAN",
+  "NAMA",
+  "DOMISILI",
+  "JENIS KELAMIN",
+  "UBAH | HAPUS",
+];
 
 const recordDataExample = [
   {
@@ -24,4 +30,13 @@ const recordDataExample = [
   },
 ];
 
-export { headerPelanggan, recordDataExample };
+const headerBarang = ["KODE", "NAMA", "KATEGORI", "HARGA", "UBAH | HAPUS"];
+const headerPenjualan = [
+  "ID NOTA",
+  "TGL",
+  "KODE PELANGGAN",
+  "SUBTOTAL",
+  "ITEM | UBAH | HAPUS",
+];
+
+export { headerPelanggan, recordDataExample, headerBarang, headerPenjualan };
