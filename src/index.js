@@ -6,7 +6,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import Penjualan from "./routes/penjualan";
 import Barang from "./routes/barang";
-import Layout from "./components/layout/layout";
 import ResponsiveDrawer from "./components/layout/ResponsiveDrawer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
