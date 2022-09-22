@@ -155,6 +155,9 @@ function Barang() {
             onChange={handleChange}
             required
           />
+          <label style={{ display: "block" }}>Warna</label>
+          <input name="warna" type={"text"} onChange={handleChange} required />
+
           <input type={"submit"} value="Simpan" style={{ display: "block" }} />
         </form>
       </main>

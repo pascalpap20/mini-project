@@ -21,15 +21,26 @@ export default function TableBarang({
             <td>
               {handleEdit.editMode.status &&
               handleEdit.editMode.rowKey === record.kode ? (
-                <input
-                  name="nama"
-                  type={"text"}
-                  placeholder="form"
-                  onChange={handleEdit.handleChange}
-                  defaultValue={handleEdit.editValue.nama}
-                />
+                <>
+                  <input
+                    name="nama"
+                    type={"text"}
+                    placeholder="form"
+                    onChange={handleEdit.handleChange}
+                    defaultValue={handleEdit.editValue.nama}
+                  />
+                  <input
+                    name="warna"
+                    type={"text"}
+                    onChange={handleEdit.handleChange}
+                    defaultValue={handleEdit.editValue.warna}
+                  />
+                </>
               ) : (
-                <div>{record.nama}</div>
+                <div>
+                  {record.nama}{" "}
+                  {record.warna !== null ? ` | ${record.warna}` : ""}
+                </div>
               )}
             </td>
 

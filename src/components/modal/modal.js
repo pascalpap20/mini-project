@@ -53,7 +53,8 @@ export default function ModalComponent({ modalData, handleView, dataBarang }) {
           <option value={""}>--</option>
           {dataBarang.map((barang, idx) => (
             <option key={idx} value={barang.kode}>
-              {barang.kode}
+              {barang.kode} | {barang.nama}{" "}
+              {barang.warna !== null ? ` | ${barang.warna}` : ""}
             </option>
           ))}
         </select>
@@ -154,6 +155,7 @@ export default function ModalComponent({ modalData, handleView, dataBarang }) {
             <li>NAMA BARANG : {barang.barang_single.nama}</li>
             <li>KATEGORI BARANG : {barang.barang_single.kategori}</li>
             <li>HARGA BARANG : {barang.barang_single.harga}</li>
+            <li>WARNA BARANG : {barang.barang_single.warna}</li>
           </ul>
         ))}
       </Modal>

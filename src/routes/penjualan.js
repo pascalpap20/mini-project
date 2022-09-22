@@ -375,7 +375,7 @@ function Penjualan() {
             <option value={""}>--</option>
             {dataPelanggan.map((pelanggan, idx) => (
               <option key={idx} value={pelanggan.id_pelanggan}>
-                {pelanggan.id_pelanggan}
+                {pelanggan.id_pelanggan} | {pelanggan.nama}
               </option>
             ))}
           </select>
@@ -384,7 +384,8 @@ function Penjualan() {
             <option value={""}>--</option>
             {dataBarang.map((barang, idx) => (
               <option key={idx} value={barang.kode}>
-                {barang.kode}
+                {barang.kode} | {barang.nama}{" "}
+                {barang.warna !== null ? ` | ${barang.warna}` : ""}
               </option>
             ))}
           </select>
